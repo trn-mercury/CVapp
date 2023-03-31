@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>c2b5d14e-574a-42af-9264-79872035ef29</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <ProjectTypeGuids>{789894c7-04a9-4a11-a6b5-3f4435165112};{1b580a1a-fdb3-4b32-83e1-6407eb2722e6};{349c5851-65df-11da-9384-00065b846f21};{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <StartupFile>runserver.py</StartupFile>
+    <SearchPath>..\CVapp</SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <LaunchProvider>Web launcher</LaunchProvider>
+    <WebBrowserUrl>http://localhost</WebBrowserUrl>
+    <OutputPath>.</OutputPath>
+    <SuppressCollectPythonCloudServiceFiles>true</SuppressCollectPythonCloudServiceFiles>
+    <Name>CVapp</Name>
+    <RootNamespace>CVapp</RootNamespace>
+    <InterpreterId>Global|PythonCore|3.11</InterpreterId>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="CVapp\projects.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="runserver.py" />
+    <Compile Include="CVapp\__init__.py" />
+    <Compile Include="CVapp\views.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CVapp\" />
+    <Folder Include="CVapp\static\" />
+    <Folder Include="CVapp\static\content\" />
+    <Folder Include="CVapp\static\fonts\" />
+    <Folder Include="CVapp\static\scripts\" />
+    <Folder Include="CVapp\templates\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="requirements.txt" />
+    <Content Include="CVapp\static\content\bootstrap.css" />
+    <Content Include="CVapp\static\content\bootstrap.min.css" />
+    <Content Include="CVapp\static\content\site.css" />
+    <Content Include="CVapp\static\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="CVapp\static\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="CVapp\static\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="CVapp\static\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="CVapp\static\scripts\bootstrap.js" />
+    <Content Include="CVapp\static\scripts\bootstrap.min.js" />
+    <Content Include="CVapp\static\scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="CVapp\static\scripts\jquery-1.10.2.js" />
+    <Content Include="CVapp\static\scripts\jquery-1.10.2.min.js" />
+    <Content Include="CVapp\static\scripts\jquery-1.10.2.min.map" />
+    <Content Include="CVapp\static\scripts\jquery.validate-vsdoc.js" />
+    <Content Include="CVapp\static\scripts\jquery.validate.js" />
+    <Content Include="CVapp\static\scripts\jquery.validate.min.js" />
+    <Content Include="CVapp\static\scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="CVapp\static\scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="CVapp\static\scripts\modernizr-2.6.2.js" />
+    <Content Include="CVapp\static\scripts\respond.js" />
+    <Content Include="CVapp\static\scripts\respond.min.js" />
+    <Content Include="CVapp\static\scripts\_references.js" />
+    <Content Include="CVapp\templates\about.html" />
+    <Content Include="CVapp\templates\project_detail.html" />
+    <Content Include="CVapp\templates\index.html" />
+    <Content Include="CVapp\templates\layout.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterpreterReference Include="Global|PythonCore|3.11" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Web.targets" />
+  <!-- Specify pre- and post-build commands in the BeforeBuild and 
+       AfterBuild targets below. -->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <AutoAssignPort>True</AutoAssignPort>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+        <WebProjectProperties>
+          <StartPageUrl>
+          </StartPageUrl>
+          <StartAction>CurrentPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram>
+          </ExternalProgram>
+          <StartExternalURL>
+          </StartExternalURL>
+          <StartCmdLineArguments>
+          </StartCmdLineArguments>
+          <StartWorkingDirectory>
+          </StartWorkingDirectory>
+          <EnableENC>False</EnableENC>
+          <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

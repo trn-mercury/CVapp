@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>Project Detail Page: {{ project.title }}</h2>
+<form method="POST">
+    <label for="project_title">Project Title:</label>
+    <input type="text" name="project_title" value="{{ project.title }}" required><br><br>
+    <label for="description">Description:</label>
+    <textarea name="description" id="description" rows="5" cols="40">{{ project.description }}</textarea><br />
+    <label for="start_date">Start Date:</label>
+    <input type="date" name="duration" value="{{ project.start_date }}" required><br><br>
+
+    <label for="end_date">End Date:</label>
+    <input type="date" name="end_date" value="{{ project.end_date }}" required><br><br>
+
+    <label for="bullet_text">Bullet Points:</label>
+    <ul id="bullet_list">
+        {% for bullet in bullets %}
+        <li>
+            <input type="text" name="bullet_text[]" value="{{ bullet.text }}" required>
+            <button type="button" class="remove_bullet">Remove Bullet</button>
+            <input type="hidden" name="bullet_id[]" value="{{ bullet.id }}">
+        </li>
+        {% endfor %}
+    </ul>
+    <button type="button" id="add_bullet">Add Bullet</button><br><br>
+
+    <input type="submit" value="Save Changes">
+</form>
+<a href="{{ url_for('index') }}">Back to Home</a>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const addBulletBtn = document.querySelector('#add_bullet');
+        addBulletBtn.addEventListener('click', function () {
+            const bulletList = document.querySelector('#bullet_list');
+            const newBullet = document.createElement('li');
+            newBullet.innerHTML = '<input type="text" name="bullet_text[]" required><button type="button" class="remove_bullet">Remove Bullet</button><input type="hidden" name="bullet_id[]" value="">';
+
+            // Get the bullet points from the Flask object
+            const bulletPoints = {{ bullet_points| tojson
+        }};
+    if (bulletPoints && bulletPoints.length > 0) {
+        // Use the first bullet point as the default value for the new input field
+        newBullet.querySelector('input[name="bullet_text[]"]').value = bulletPoints[0];
+        // Loop through the remaining bullet points and add additional input fields
+        for (let i = 1; i < bulletPoints.length; i++) {
+            const bullet = document.createElement('li');
+            bullet.innerHTML = '<input type="text" name="bullet_text[]" required value="' + bulletPoints[i] + '"><button type="button" class="remove_bullet">Remove Bullet</button><input type="hidden" name="bullet_id[]" value="">';
+            bulletList.appendChild(bullet);
+        }
+    }
+    bulletList.appendChild(newBullet);
+    });
+
+    const bulletList = document.querySelector('#bullet_list');
+    bulletList.addEventListener('click', function (e) {
+        if (e.target && e.target.matches('.remove_bullet')) {
+            e.target.parentNode.remove();
+        }
+    });
+});
+
+</script>
+
+{% endblock %}

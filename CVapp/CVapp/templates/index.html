@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h1>{{ title }}</h1>
+<ul>
+    {% for project in projects %}
+    <li>
+        <h2>{{ project.title }}</h2>
+        <p>{{ project.start_date }} - {{ project.end_date }}</p>
+        <ul>
+            {% for bullet in project.bullets %}
+            <li>{{ bullet.id }}. {{ bullet.text }}</li>
+            {% endfor %}
+        </ul>
+    </li>
+    <form action="{{ url_for('project_detail', project_id=project.id) }}" method="GET">
+        <button type="submit">View Details</button>
+    </form>
+    {% endfor %}
+</ul>
+<h2>Add Project</h2>
+<form action="/add_project" method="post">
+    <label for="project_title">Title:</label>
+    <input type="text" name="project_title" id="project_title"><br>
+    <label for="role">Role:</label>
+    <input type="text" name="role" id="role"><br>
+    <label for="description">Description:</label>
+    <textarea name="description" id="description" rows="5" cols="40"></textarea><br />
+    <label for="start_date">Start Date:</label>
+    <input type="date" name="start_date" id="start_date"><br>
+    <label for="end_date">End Date:</label>
+    <input type="date" name="end_date" id="end_date"><br>
+
+    <label for="bullets">Bullets:</label>
+    <ul id="bullets">
+        <li>
+            <input type="text" name="bullets[]" class="bullet-input">
+            <button type="button" onclick="removeBullet(this)">Remove</button>
+        </li>
+    </ul>
+    <button type="button" onclick="addBullet()">Add Bullet</button><br>
+    <input type="submit" value="Add Project">
+</form>
+
+{% endblock %}
