@@ -127,3 +127,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+/.vs/CVapp
+/CVapp/projects.db
+/CVapp/projects.sqbpro
