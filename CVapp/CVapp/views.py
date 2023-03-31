@@ -55,7 +55,7 @@ def get_projects():
 @app.route('/index')
 def index():
     projects = get_projects()
-    return render_template('index.html', page_title='My Projects', projects=projects)
+    return render_template('index.html', title='My Projects', projects=projects)
 
 @app.route('/add_project', methods=['POST'])
 def add_project():
@@ -131,12 +131,12 @@ def project_detail(project_id):
         return redirect(url_for('project_detail', project_id=project_id))
 
     # Get the bullets for the project from the database
-    c.execute('SELECT id, text FROM bullets WHERE project_id=?', (project_id,))
-    bullets = c.fetchall()
+    # c.execute('SELECT id, text FROM bullets WHERE project_id=?', (project_id,))
+    bullets = project.getBullets()
 
     conn.close()
 
-    return render_template('project_detail.html', page_title='Project Detail Page', project=project, bullets=bullets)
+    return render_template('project_detail.html', title='Project Detail Page', project=project, bullets=bullets)
 
 
 @app.route('/about')

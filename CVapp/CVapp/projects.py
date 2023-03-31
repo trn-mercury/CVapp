@@ -8,6 +8,9 @@ class Project:
         self.description = description
         self.bullets = bullets
 
+    def getBullets(self):
+        return self.bullets
+
 class Bullet:
     def __init__(self, id, text):
         self.id = id
